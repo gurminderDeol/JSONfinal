@@ -18,6 +18,12 @@ public class ListAdapter extends BaseAdapter {
     private ArrayList<Student> studentArrayList;
 
 
+    public ListAdapter(Context context, ArrayList<Student> studentArrayList) {
+        this.context = context;
+        this.studentArrayList = studentArrayList;
+    }
+
+
     @Override
     public int getCount() {
         return studentArrayList.size();
