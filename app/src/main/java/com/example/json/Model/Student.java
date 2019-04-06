@@ -37,4 +37,10 @@ public class Student implements Serializable {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
+
+    public String toString()
+    {
+        return "";
+    }
 }
