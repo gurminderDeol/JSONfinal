@@ -1,5 +1,6 @@
 package com.example.json;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,12 +20,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class MainActivity extends AppCompatActivity {
 
     private ListView lstStudentData;
     private ArrayList<Student> studentArrayList;
     private ArrayList<String> iname;
+
+    Student s  = new Student();
 
 
     @Override
@@ -50,7 +54,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-
+                Student stud = studentArrayList.get(position);
+                Intent mIntent=new Intent(MainActivity.this,Result.class);
+                mIntent.putExtra("stud",stud);
+                startActivity(mIntent);
 
 
             }
@@ -98,19 +105,26 @@ public class MainActivity extends AppCompatActivity {
                         //  Log.d("mjson_ID", String.valueOf(id));
                         //  Log.d("mjson_name", String.valueOf(name));
                         //  Log.d("mjson_gender", String.valueOf(gender));
-                        studentArrayList.add(new Student(id, name, gender));
-                        Log.d("mjson_ID", String.valueOf(id));
+                        //studentArrayList.add(new Student(id, name, gender));
+                        // Log.d("mjson_ID", String.valueOf(id));
+                        studentArrayList.add(new Student(String.valueOf(id), String.valueOf(name), String.valueOf(gender)));
+
+                        System.out.println("Using Iterator class");
+                        System.out.println("-----------------------");
+                        Iterator<Student> it = studentArrayList.iterator();
+                        while (it.hasNext()) {
+                            System.out.println(it.next().getSname());
 
 
-
-
+                        }
                     }
-
-
                 }
 
 
-            } catch (JSONException e) {
+                        s.setStudentArrayList(studentArrayList);
+
+
+                    } catch (JSONException e) {
                 e.printStackTrace();
             }
 

@@ -17,6 +17,7 @@ public class ListAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<Student> studentArrayList;
 
+    Student s = new Student();
 
     public ListAdapter(Context context, ArrayList<Student> studentArrayList) {
         this.context = context;
